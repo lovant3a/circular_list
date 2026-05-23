@@ -209,4 +209,9 @@ std::ostream& operator<<(std::ostream& os, const CircularList<T>& list) {
     return os;
 }
 
+template <typename T>
+CircularList<T> CircularList<T>::clone() const {
+    return CircularList<T>(*this);
+}
+
 #endif 
