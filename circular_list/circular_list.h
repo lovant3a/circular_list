@@ -48,6 +48,7 @@ public:
     CircularList();
     CircularList(const CircularList& other);
     CircularList(CircularList&& other) noexcept;
+    CircularList clone() const;
     ~CircularList();
 
     CircularList& operator=(const CircularList& other);
