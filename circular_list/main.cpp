@@ -39,17 +39,18 @@ int main() {
         cout << "  7. перейти к предыдущему элементу (<<)\n";
         cout << "  8. показать значение текущего элемента\n";
         cout << "  9. вывести весь список на экран\n";
+        cout << " 10. создать копию текущего списка\n";             
         cout << "  0. выход из программы\n";
         cout << "выберите команду: ";
 
         if (!(cin >> choice)) {
             clearCin();
-            cout << "ошибка: введите число от 0 до 9.\n";
+            cout << "ошибка: введите число от 0 до 10.\n";          
             continue;
         }
 
         try {
-            if (choice >= 3 && choice <= 9 && activeIdx == -1) {
+            if (choice >= 3 && choice <= 10 && activeIdx == -1) {   
                 cout << "сначала создайте или выберите список\n";
                 continue;
             }
@@ -117,6 +118,17 @@ int main() {
             case 9: {
                 cout << "содержимое списка [" << activeIdx << "]:\n";
                 cout << lists[activeIdx] << "\n";
+                break;
+            }
+            case 10: {                                               
+                if (lists[activeIdx].empty()) {
+                    cout << "список пуст, копировать нечего\n";
+                }
+                else {
+                    lists.push_back(lists[activeIdx].clone());
+                    activeIdx = lists.size() - 1;
+                    cout << "копия создана и выбрана как список [" << activeIdx << "]\n";
+                }
                 break;
             }
             case 0: {
